@@ -126,14 +126,17 @@ function fetchChatHistory() {
 
       const messages = messageLines.map(msg => {
         const isFromYou = msg.startsWith(localName + ':');
-        return `<div class="msg ${isFromYou ? 'you' : 'partner'}">${msg}</div>`;
+        const messageWithLinks = msg.replace(
+          /(https?:\/\/[^\s]+)/g,
+          '<a href="$1" target="_blank" class="link" style="color:blue; text-decoration:underline;">$1</a>'
+        );
+        return `<div class="msg ${isFromYou ? 'you' : 'partner'}">${messageWithLinks}</div>`;
       }).join('');
 
       messagesEl.innerHTML = messages;
       messagesEl.scrollTop = messagesEl.scrollHeight;
     })
     .catch(err => {
-      console.error('Error fetching chat history:', err);
     });
 }
 
