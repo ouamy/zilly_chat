@@ -1,0 +1,152 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #36393f;
+  color: #dcddde;
+  display: flex;
+  flex-direction: column;
+}
+
+#login {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #2f3136;
+}
+
+#startBtn{
+    margin-top: 2em;
+}
+
+#chat {
+  display: none;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 600px;
+  margin: auto;
+  width: 100%;
+  background: #2f3136;
+  box-shadow: 0 0 15px #000;
+  border-radius: 8px;
+}
+
+#header {
+  padding: 10px;
+  background: #40444b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#header h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #fff;
+}
+
+#volume-control {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+#volume-slider {
+  margin-left: 10px;
+  width: 100px;
+}
+
+#volume-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 12px 12px 12px;
+  font-size: 14px;
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+#messages .msg {
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  border-radius: 16px;
+  max-width: 75%;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+#messages .msg.you {
+  background: #4a90e2;
+  align-self: flex-end;
+  color: #fff;
+}
+
+#messages .msg.partner {
+  background: #40444b;
+  align-self: flex-start;
+}
+
+#input-area {
+  display: flex;
+  border-top: 1px solid #444;
+  background: #2f3136;
+  padding: 8px;
+  align-items: center;
+}
+
+#messageInput {
+  flex: 1;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  font-size: 14px;
+  outline: none;
+  background: #40444b;
+  color: #dcddde;
+}
+
+#emoji-button {
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+
+#input-area button[type="button"] {
+  margin-left: 8px;
+  background: #4a90e2;
+  border: none;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#status {
+  padding: 6px 12px;
+  font-size: 12px;
+  text-align: center;
+  color: #aaa;
+  background: #2f3136;
+  border-top: 1px solid #444;
+}
+
+a {
+  color: yellow;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

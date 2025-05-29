@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZillyChat</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-button@2.2.2/dist/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/argon2-browser@1.18.0/dist/argon2-bundled.min.js"></script>
+</head>
+<body>
+
+  <div id="login">
+    <h1 id="titlepage">ZillyChat</h1>
+    <label for="nameInput">Enter your name:</label>
+    <input id="nameInput" type="text" placeholder="Your name" />
+    <label for="passwordInput">Enter password:</label>
+    <input id="passwordInput" type="password" placeholder="Password" />
+    <button id="startBtn">Start Chat</button>
+  </div>
+
+  <div id="chat">
+    <div id="header">
+      <h1>ZillyChat</h1>
+      <div id="volume-control">
+        <span id="volume-icon">🔊</span>
+        <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5" />
+      </div>
+    </div>
+    <div id="messages"></div>
+    <form id="input-area">
+      <input id="messageInput" type="text" placeholder="Type your message..." autocomplete="off" />
+      <span id="emoji-button">🙂</span>
+      <button type="button" id="sendBtn">Send</button>
+    </form>
+    <div id="status">Connecting...</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
