@@ -102,35 +102,40 @@
   let lastHistorySize = 0;
   let lastMessageSender = '';
 
-  function fetchChatHistory() {
-    fetch('/chat-history')
-      .then(response => response.text())
-      .then(data => {
-        const messageLines = data.trim().split('\n');
+function fetchChatHistory() {
+  fetch('/chat-history')
+    .then(response => response.text())
+    .then(data => {
+      const messageLines = data.trim() ? data.trim().split('\n') : [];
 
-        if (messageLines.length > lastHistorySize) {
-          const lastMessage = messageLines[messageLines.length - 1];
-          const sender = lastMessage.split(':')[0];
+      if (messageLines.length < lastHistorySize) {
+        lastHistorySize = 0;
+        messagesEl.innerHTML = '';
+      }
 
-          if (sender !== localName) {
-            notificationSound.play();
-          }
+      if (messageLines.length > lastHistorySize) {
+        const lastMessage = messageLines[messageLines.length - 1];
+        const sender = lastMessage.split(':')[0];
 
-          lastHistorySize = messageLines.length;
+        if (sender !== localName) {
+          notificationSound.play();
         }
 
-        const messages = messageLines.map(msg => {
-          const isFromYou = msg.startsWith(localName + ':');
-          return `<div class="msg ${isFromYou ? 'you' : 'partner'}">${msg}</div>`;
-        }).join('');
-        
-        messagesEl.innerHTML = messages;
-        messagesEl.scrollTop = messagesEl.scrollHeight;
-      })
-      .catch(err => {
-        console.error('Error fetching chat history:', err);
-      });
-  }
+        lastHistorySize = messageLines.length;
+      }
+
+      const messages = messageLines.map(msg => {
+        const isFromYou = msg.startsWith(localName + ':');
+        return `<div class="msg ${isFromYou ? 'you' : 'partner'}">${msg}</div>`;
+      }).join('');
+
+      messagesEl.innerHTML = messages;
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    })
+    .catch(err => {
+      console.error('Error fetching chat history:', err);
+    });
+}
 
   function sendMessage() {
     const message = messageInput.value.trim();
