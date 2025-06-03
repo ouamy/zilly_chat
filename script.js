@@ -123,6 +123,7 @@ function fetchChatHistory() {
 
         lastHistorySize = messageLines.length;
       }
+      const wasAtBottom = messagesEl.scrollTop + messagesEl.clientHeight >= messagesEl.scrollHeight - 5;
 
       const messages = messageLines.map(msg => {
         const isFromYou = msg.startsWith(localName + ':');
@@ -134,7 +135,11 @@ function fetchChatHistory() {
       }).join('');
 
       messagesEl.innerHTML = messages;
-      messagesEl.scrollTop = messagesEl.scrollHeight;
+
+      if (wasAtBottom) {
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+
     })
     .catch(err => {
     });
@@ -165,7 +170,11 @@ function fetchChatHistory() {
     msgEl.classList.add('msg', 'you');
     msgEl.textContent = message;
     messagesEl.appendChild(msgEl);
+    const wasAtBottom = messagesEl.scrollTop + messagesEl.clientHeight >= messagesEl.scrollHeight - 5;
+    messagesEl.innerHTML = messages;
+    if (wasAtBottom) {
     messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
   }
 
   function updateVolumeIcon(volume) {
